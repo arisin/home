@@ -6,17 +6,13 @@ alias cmake.ninja='cmake -G Ninja'
 alias cmake.ninja.debug='cmake.ninja -DCMAKE_BUILD_TYPE=debug'
 alias cmake.ninja.release='cmake.ninja -DCMAKE_BUILD_TYPE=release'
 
-alias cmake.ninja.g++='cmake.ninja -DCMAKE_CXX_COMPILER="g++"'
-alias cmake.ninja.g++.release='cmake.ninja.g++ -DCMAKE_BUILD_TYPE=release'
-alias cmake.ninja.g++.debug='cmake.ninja.g++ -DCMAKE_BUILD_TYPE=debug'
-
-alias cmake.ninja.clang++='cmake.ninja -DCMAKE_CXX_COMPILER="clang++"'
-alias cmake.ninja.clang++.release='cmake.ninja.clang++ -DCMAKE_BUILD_TYPE=release'
-alias cmake.ninja.clang++.debug='cmake.ninja.clang++ -DCMAKE_BUILD_TYPE=debug'
-
-alias cmake.ninja.em++='cmake.ninja -DCMAKE_CXX_COMPILER="em++"'
-alias cmake.ninja.em++.release='cmake.ninja.em++ -DCMAKE_BUILD_TYPE=release'
-alias cmake.ninja.em++.debug='cmake.ninja.em++ -DCMAKE_BUILD_TYPE=debug'
+for compiler in g++ g++-4.8 g++-4.7 g++-4.6 clang++ em++
+do
+  alias cmake.ninja.${compiler}="cmake.ninja -DCMAKE_CXX_COMPILER=\"${compiler}\""
+  alias cmake.ninja.${compiler}.release="cmake.ninja.${compiler} -DCMAKE_BUILD_TYPE=release"
+  alias cmake.ninja.${compiler}.debug="cmake.ninja.${compiler} -DCMAKE_BUILD_TYPE=debug"
+  alias cmake.ninja.${compiler}.relwithdebinfo="cmake.ninja.${compiler} -DCMAKE_BUILD_TYPE=relwithdebinfo"
+done
 
 alias cmake.codeblocks.make='cmake -G "CodeBlocks - Unix Makefiles"'
 alias cmake.codeblocks.make.debug='cmake.codeblocks.make -DCMAKE_BUILD_TYPE=debug'
